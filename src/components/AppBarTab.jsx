@@ -1,29 +1,38 @@
 import React from "react";
-import {
-  View,
-  StyleSheet,
-  TouchableWithoutFeedback,
-  Alert,
-} from "react-native";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
+import { useHistory, useLocation } from "react-router-native";
+import theme from "../theme";
+
 import Text from "./Text";
 
 const styles = StyleSheet.create({
-  container: { marginLeft: 10, marginRight: 10 },
-  text: {
+  container: { marginRight: 15 },
+  activeTab: {
     color: "#ffffff",
+  },
+  inactiveTab: {
+    color: theme.colors.mainBackground,
+    opacity: 0.7,
   },
 });
 
-const AppBarTab = ({ title }) => {
+const AppBarTab = ({ title, path }) => {
+  const history = useHistory();
+
+  const location = useLocation();
+
   return (
     <View style={styles.container}>
-      <TouchableWithoutFeedback
-        onPress={() => Alert.alert("Under Construction")}
-      >
-        <Text fontWeight="bold" style={styles.text}>
+      <TouchableOpacity activeOpacity={0.8} onPress={() => history.push(path)}>
+        <Text
+          fontWeight="bold"
+          style={
+            location.pathname === path ? styles.activeTab : styles.inactiveTab
+          }
+        >
           {title}
         </Text>
-      </TouchableWithoutFeedback>
+      </TouchableOpacity>
     </View>
   );
 };
