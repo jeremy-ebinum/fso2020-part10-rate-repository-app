@@ -34,7 +34,7 @@ const Text = ({ color, fontSize, fontWeight, style, ...props }) => {
     style,
   ];
 
-  return <NativeText style={textStyle} {...props} />;
+  return <NativeText style={textStyle} textBreakStrategy="simple" {...props} />;
 };
 
 export default Text;
