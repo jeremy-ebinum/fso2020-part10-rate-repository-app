@@ -26,7 +26,7 @@ const AppBar = () => {
         <Link to="/" title="Repositories" path="/" component={AppBarTab}></Link>
         <Link
           to="/signin"
-          title="Sign In"
+          title="Sign in"
           path="/signin"
           component={AppBarTab}
         ></Link>
