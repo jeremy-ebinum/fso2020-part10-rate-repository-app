@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
-import { useHistory, useLocation } from "react-router-native";
+import { useLocation } from "react-router-native";
 import theme from "../theme";
 
 import Text from "./Text";
@@ -16,14 +16,12 @@ const styles = StyleSheet.create({
   },
 });
 
-const AppBarTab = ({ title, path }) => {
-  const history = useHistory();
-
+const AppBarTab = ({ title, path, cb }) => {
   const location = useLocation();
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity activeOpacity={0.8} onPress={() => history.push(path)}>
+      <TouchableOpacity activeOpacity={0.8} onPress={() => cb(path)}>
         <Text
           fontWeight="bold"
           style={

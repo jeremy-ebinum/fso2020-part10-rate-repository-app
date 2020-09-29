@@ -15,7 +15,7 @@ const ItemSeparator = () => <View style={styles.separator} />;
 const RepositoryList = () => {
   const { repositories } = useRepositories();
 
-  const repositoryNodes = repositories
+  const repositoryNodes = repositories.edges
     ? repositories.edges.map((edge) => edge.node)
     : [];
 
